@@ -13,7 +13,9 @@ class RandomQueue:
     def remove(self):
         if self.is_empty():
             raise ValueError("Queue is empty!")
-        return self.elements.pop(random.randrange(len(self.elements)))
+        index = random.randint(0, len(self.elements) - 1)
+        self.elements[index], self.elements[-1] = self.elements[-1], self.elements[index]
+        return self.elements.pop()
 
     def is_empty(self):
         return len(self.elements) == 0
